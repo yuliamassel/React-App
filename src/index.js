@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.css'
+import './fonts/type/NunitoSans-Regular.ttf'
+import './fonts/type/NunitoSans-Bold.ttf'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
