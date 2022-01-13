@@ -1,11 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../Components/Button/Index";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 
 const Comfirmation = () => {
+  const navigate = useNavigate()
   return (
+
+
     <div className="body">
       <Navbar />
       <div className="container d-flex flex-row">
@@ -37,7 +41,7 @@ const Comfirmation = () => {
           <div className="search-user ms-4 mb-3">
               <p className="ms-3 mt-2 ">Notes <br /><h5 className="fw-bold fs-6">For Buying Some Socks</h5></p>            
           </div>
-          <Button className="btn-small my-5">Continue</Button>
+          <Button className="btn-small my-5" onClick={navigate("/Modal")}>Continue</Button>
           </div>
         </div>
       </div>

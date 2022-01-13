@@ -9,6 +9,7 @@ import Sidebar from "../../Components/Sidebar";
 const InputAmount = () => {
 
   const navigate = useNavigate()
+  
 
   const handleClick = () =>{
     navigate('/input-filled')
@@ -25,7 +26,7 @@ const InputAmount = () => {
             <img
               className="ms-2 me-3"
               width="50"
-              src="images/samuel.svg"
+              src="http://localhost:3000/images/samuel.svg"
               alt=""
             />
             <h6 className="fw-bold mt-3">

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {useNavigate} from 'react-router-dom'
-import axios from 'axios'
-import ClipLoader from "react-spinners/ClipLoader";
+import {Link, useNavigate} from 'react-router-dom'
+import axios from 'axios';
 import Button from "../Components/Button/Index";
 import "../Components/Global/global.css";
 import Input from "../Components/Input/Input";
@@ -24,14 +23,16 @@ const Login = () => {
     });
   };
 
+  useEffect(()=>{
 
+  })
 
   const handleClick = () =>{
     setLoading(true)
-    axios.post('http://zwallet-massel.herokuapp.com/users/login', form)
+    axios.post('https://zwallet-massel.herokuapp.com/users/login', form)
     .then((res)=>{
       setLoading(false)
-      const result = res.data
+      const result = res.data.data
       console.log(result);
       localStorage.setItem('auth', "1")
       localStorage.setItem('user', JSON.stringify(result))
@@ -68,7 +69,7 @@ const Login = () => {
           </p>
         </div>
         <div className="col">
-          <h4 className="p-4">
+          <h4 className="p-4 fw-bold">
             Start Accessing Banking Needs <br />
             With All Devices and All Platforms <br />
             With 30.000+ Users
@@ -78,6 +79,7 @@ const Login = () => {
             Zwallet wherever you are. Desktop, laptop, mobile phone? <br />
             we cover all of that for you!
           </p>
+          <img className="position-absolute ms-3" src="images/mail.svg" alt="" />
           <Input
             className="input-register ms-3 mb-5"
             name="email"
@@ -87,7 +89,8 @@ const Login = () => {
             placeholder="Enter your e-mail"
           />
           {errorMsg && <p className="text-danger">{errorMsg}</p>}
-          
+          <div>
+          <img className="position-absolute ms-3" src="images/lock.svg" alt="" />
           <Input
             className="input-register ms-3 mb-5"
             type="password"
@@ -96,9 +99,10 @@ const Login = () => {
             value={form.password}
             placeholder="Enter your password"
           />
+          </div>
           {/* {errorMsg && <p className="text-danger">{errorMsg}</p>} */}
           <Button className="btn w-75 mt-4 ms-4" isLoading={loading} onClick={handleClick}>Login</Button>
-          
+          <p className="ms-4 mt-3 text-decoration-none">Dont have an account? Let's <Link to="/signup"> Sign Up</Link></p>
         </div>
       </div>
     </div>

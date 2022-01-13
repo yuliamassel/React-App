@@ -1,11 +1,24 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import {  useNavigate } from 'react-router-dom'
 import Footer from '../../Components/Footer'
 import Input from '../../Components/Input/Input'
 import Navbar from '../../Components/Navbar'
 import Sidebar from '../../Components/Sidebar'
 
 const Search = () => {
+
+  const [users, setUsers]= useState([])
+  const navigate = useNavigate()
+
+  useEffect (()=>{
+    axios.get('https://zwallet-massel.herokuapp.com/users/')
+    .then((res)=>{
+      const result = res.data.data
+      setUsers(result)
+    })
+  },[])
+
     return (
         <div className='body'>
         <Navbar/>
@@ -14,13 +27,16 @@ const Search = () => {
             <div className="shape big-box mt-4">
                 <h5 className='p-2 fw-bold'>Search Receiver</h5>
                 <Input className="search-input" placeholder="Search receiver here" type="text"/>
-                <Link to="/input-blank" className='text-decoration-none text-dark'>
-                <div className="search-user ms-4 mt-4">
-                  <img className='ms-2 me-3' width="50" src="images/samuel.svg" alt="" />
-                  <h6 className="fw-bold mt-3">Samuel Suhi <br /> <p className="desc">+62789564234</p></h6>
-                </div>
-                </Link>
-                <div className="search-user ms-4 mt-4">
+                {/* <Link to="/input-blank" className='text-decoration-none text-dark'> */}
+                  {users.map((dataUser)=>(
+                      <div className="search-user ms-4 mt-4" onClick={()=>navigate(`/input-blank/${dataUser.id}`)}>
+                      <img className='ms-2 me-3' width="50" src="images/samuel.svg" alt="" />
+                      <h6 className="fw-bold mt-3">{dataUser.username} <br /> <p className="desc">{dataUser.telephone}</p></h6>
+                    </div>
+                  ))}
+                
+                {/* </Link> */}
+                {/* <div className="search-user ms-4 mt-4">
                   <img className='ms-2 me-3 mt-2' width="50" height="50" src="/images/momo2.png" alt="" />
                   <h6 className="fw-bold mt-3">Momo Taro <br /> <p className="desc">+623456543987</p></h6>
                 </div>
@@ -31,7 +47,7 @@ const Search = () => {
                 <div className="search-user ms-4 mt-4">
                   <img className='ms-2 me-3 mt-2' width="50" height="50" src="/images/robert.png" alt="" />
                   <h6 className="fw-bold mt-3">Michael Lee <br /> <p className="desc">+6223487650</p></h6>
-                </div>
+                </div> */}
             </div>
         </div>
            <Footer/>

@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import Button from "../Components/Button/Index";
 import "../Components/Global/global.css";
 import Input from "../Components/Input/Input";
 import Image from "./handphone.png";
-import Waves from "./waves.png"
+
 
 const SignUp = () => {
 
@@ -56,7 +56,7 @@ const SignUp = () => {
           </p>
         </div>
         <div className="col">
-          <h4 className="p-4">
+          <h4 className="p-4 fw-bold">
             Start Accessing Banking Needs <br />
             With All Devices and All Platforms <br />
             With 30.000+ Users
@@ -67,6 +67,7 @@ const SignUp = () => {
             we cover all of that for you!
           </p>
           <form onSubmit={handleSubmit}>
+            <img className="position-absolute ms-4" src="images/person.svg" alt="" />
           <Input
             className="input-register ms-3 mb-5"
             type="text"
@@ -75,6 +76,8 @@ const SignUp = () => {
             value={form.username}
             placeholder="Enter your username"
           />
+          <div>
+          <img className="position-absolute ms-4" src="images/mail.svg" alt="" />
           <Input
             className="input-register ms-3 mb-5"
             type="email"
@@ -83,6 +86,9 @@ const SignUp = () => {
             value={form.email}
             placeholder="Enter your e-mail"
           />
+          </div>
+          <div>
+          <img className="position-absolute ms-4" src="images/lock.svg" alt="" />
           <Input
             className="input-register ms-3 mb-5"
             type="password"
@@ -91,7 +97,12 @@ const SignUp = () => {
             value={form.password}
             placeholder="Create your password"
           />
+          </div>
           <Button className="btn mt-4 ms-4" type="submit">SignUp</Button>
+          <p className="ms-4 mt-3">
+              Already have an account? Let’s
+              <Link to="/login"> Login</Link>
+            </p>
           </form>
         </div>
       </div>
