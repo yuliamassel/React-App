@@ -1,7 +1,8 @@
 import React from "react";
-import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
+import { Link } from "react-router-dom";
+import Footer from "../../Components/Footer";
+import Navbar from "../../Components/Navbar";
+import Sidebar from "../../Components/Sidebar";
 
 const PersonalInfo = () => {
   return (
@@ -25,8 +26,9 @@ const PersonalInfo = () => {
           <div className="search-user ms-4 mb-3">
               <p className="ms-3 mt-2 ">Verified E-mail<br /><h5 className="fw-bold fs-6">Aguilera@gmail.com</h5></p>            
           </div>
-          <div className="search-user ms-4 mb-3">
-              <p className="ms-3 mt-2 ">Phone Number <br /><h5 className="fw-bold fs-6">+62 874-098-233</h5></p>            
+          <div className="search-user d-flex justify-content-between ms-4 mb-3">
+              <p className="ms-3 mt-2 ">Phone Number <br /><h5 className="fw-bold fs-6">+62 874-098-233</h5></p>    
+              <Link to="" className="text-decoration-none mt-4 me-5">Manage</Link>        
           </div>
           </div>
         </div>

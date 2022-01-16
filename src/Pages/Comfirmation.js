@@ -1,15 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../Components/Button/Index";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 
 const Comfirmation = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-
-
     <div className="body">
       <Navbar />
       <div className="container d-flex flex-row">
@@ -29,19 +27,33 @@ const Comfirmation = () => {
           </div>
           <h5 className="p-4 fs-6 fw-bold">Details</h5>
           <div className="detail">
-          <div className="search-user ms-4 mb-3">
-              <p className="ms-3 mt-2">Amount <br /><h5 className="fw-bold fs-6">Rp.100.000</h5></p>            
-          </div>
-          <div className="search-user ms-4 mb-3">
-              <p className="ms-3 mt-2">Balance Left <br /><h5 className="fw-bold fs-6">Rp.20.000</h5></p>            
-          </div>
-          <div className="search-user ms-4 mb-3">
-              <p className="ms-3 mt-2 ">Date & Time <br /><h5 className="fw-bold fs-6">-</h5></p>            
-          </div>
-          <div className="search-user ms-4 mb-3">
-              <p className="ms-3 mt-2 ">Notes <br /><h5 className="fw-bold fs-6">For Buying Some Socks</h5></p>            
-          </div>
-          <Button className="btn-small my-5" onClick={navigate("/Modal")}>Continue</Button>
+            <div className="search-user ms-4 mb-3">
+              <p className="ms-3 mt-2">
+                Amount <br />
+                <h5 className="fw-bold fs-6">Rp.100.000</h5>
+              </p>
+            </div>
+            <div className="search-user ms-4 mb-3">
+              <p className="ms-3 mt-2">
+                Balance Left <br />
+                <h5 className="fw-bold fs-6">Rp.20.000</h5>
+              </p>
+            </div>
+            <div className="search-user ms-4 mb-3">
+              <p className="ms-3 mt-2 ">
+                Date & Time <br />
+                <h5 className="fw-bold fs-6">-</h5>
+              </p>
+            </div>
+            <div className="search-user ms-4 mb-3">
+              <p className="ms-3 mt-2 ">
+                Notes <br />
+                <h5 className="fw-bold fs-6">For Buying Some Socks</h5>
+              </p>
+            </div>
+            <Button className="btn-small my-5" onClick={ navigate("/modal")}>
+              Continue
+            </Button>
           </div>
         </div>
       </div>

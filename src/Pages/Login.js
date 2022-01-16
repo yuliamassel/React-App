@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {Link, useNavigate} from 'react-router-dom'
-import axios from 'axios';
+import axios from "axios";
 import Button from "../Components/Button/Index";
 import "../Components/Global/global.css";
 import Input from "../Components/Input/Input";
@@ -29,7 +29,16 @@ const Login = () => {
 
   const handleClick = () =>{
     setLoading(true)
-    axios.post('https://zwallet-massel.herokuapp.com/users/login', form)
+    // axios.post(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/login`, form)
+    axios({
+      baseURL: `${process.env.REACT_APP_BACKEND_ZWALLET}`,
+      data: {
+        email: form.email, 
+        password: form.password
+      },
+      method: 'POST',
+      url: '/user/login'
+    })
     .then((res)=>{
       setLoading(false)
       const result = res.data.data
@@ -41,11 +50,11 @@ const Login = () => {
     .catch((err)=>{
       setLoading(false)
       console.log(err.response);
-      if(err.response.status === 403){
-        setErrorMsg(err.response.data.message)
-    }else{
-        setErrorMsg('internal server error')
-    }
+    //   if(err.response.status === 403){
+    //     setErrorMsg(err.response.data.message)
+    // }else{
+    //     setErrorMsg('internal server error')
+    // }
     })
   }
 

@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Button from '../Button/Index'
+const Modal=() =>{
 
-function Modal() {
-    return (
-<div class="modal-dialog modal-dialog-centered">
-  ...
-</div>
-    )
+  return (
+
+    
+
+    <div className="modal-dialog">
+      <Button>Close</Button>
+    </div>
+  )
 }
-
 export default Modal
