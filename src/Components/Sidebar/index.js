@@ -1,7 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+
+  const navigate = useNavigate()
+
+  const handleLogout= ()=>{
+    localStorage.removeItem('auth')
+    localStorage.removeItem('user')
+    navigate('/login')
+  }
+
   return (
     <>
       <div className="sidebar shape  mt-4 me-4">
@@ -33,7 +42,7 @@ const Sidebar = () => {
             </h5>
           </li>
           </Link>
-          <li className="list-bottom pe-3">
+          <li className="list-bottom pe-3" onClick={handleLogout}>
             <h5 className="fw-bold">
               <img src="/images/log-out.svg" alt="" /> Logout
             </h5>
