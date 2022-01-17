@@ -1,10 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
 
 const PersonalInfo = () => {
+
+  const [info, setInfo] = useState
+  const navigate = useNavigate()
+
+  useEffect (()=>{
+    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users`)
+  })
+
   return (
     <div className="body">
       <Navbar />
@@ -28,7 +37,7 @@ const PersonalInfo = () => {
           </div>
           <div className="search-user d-flex justify-content-between ms-4 mb-3">
               <p className="ms-3 mt-2 ">Phone Number <br /><h5 className="fw-bold fs-6">+62 874-098-233</h5></p>    
-              <Link to="" className="text-decoration-none mt-4 me-5">Manage</Link>        
+              <Link to="/Manage-Phone-Number" className="text-decoration-none mt-4 me-5">Manage</Link>        
           </div>
           </div>
         </div>

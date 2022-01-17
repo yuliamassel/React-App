@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PinInput from "react-pin-input";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar";
@@ -7,6 +7,13 @@ import Sidebar from "../../Components/Sidebar";
 import Button from "../../Components/Button/Index";
 
 const ChangePin = () => {
+
+  const navigate = useNavigate()
+
+  const handleClick=()=>{
+    navigate("/New-PIN")
+  }
+
   return (
     <div className="body">
       <Navbar />
@@ -33,7 +40,7 @@ const ChangePin = () => {
             autoSelect={true}
             regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
           />
-        <Button className="btn w-50 exphanse me-5">Continue</Button>
+        <Button className="btn w-50 exphanse me-5" onClick={handleClick}>Continue</Button>
         </div>
       </div>
       <Footer />

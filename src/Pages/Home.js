@@ -1,7 +1,7 @@
 import React from "react";
 import Balance from "../Components/Balance";
 import Footer from "../Components/Footer";
-import "../Components/Global/global.css";
+import "../Global/global.css";
 import Graphic from "../Components/Graphic";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
