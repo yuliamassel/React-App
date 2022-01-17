@@ -12,6 +12,7 @@ We have some great features from the application and it’s totally free to use 
 
 1. Register Pages
 	- Login 
+		![login](../wallet/public/images/Login.png)
 	- Sign Up
 	- Reset Password
 2. Home Page
