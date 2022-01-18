@@ -193,6 +193,10 @@
   border-radius: 5px;
 }
 
+.search-user:hover{
+  cursor: pointer;
+}
+
 .choice {
   display: flex;
   flex-direction: row;

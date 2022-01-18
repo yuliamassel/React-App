@@ -12,7 +12,7 @@ We have some great features from the application and it’s totally free to use 
 
 1. Register Pages
 	- Login 
-		![](../images/Login.png)
+		![](http://localhost:3000/images/Login.png)
 	- Sign Up
 	- Reset Password
 2. Home Page
