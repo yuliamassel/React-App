@@ -1,11 +1,28 @@
-import React from 'react'
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from 'react'
+import axios from 'axios';
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
-import Button from '../../Components/Button/Index';
 
 const ManagePn = () => {
+
+  const [user, setUser]= useState(null)
+
+  useEffect(()=>{
+    const userFromLS = JSON.parse(localStorage.getItem("user"))
+    // console.log(userFromLS);
+    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/${userFromLS.id}`)
+    .then((res) => {
+      const result = res.data.result;
+      console.log(result);
+      setUser(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  },[])
+
+
     return (
         <div className="body">
         <Navbar />
@@ -17,7 +34,7 @@ const ManagePn = () => {
             You can only delete the phone number and then <br /> you must add another phone number.
             </p>
             <div className="search-user ms-4 mt-4 p-2 d-flex justify-content-between">
-                <p className='ms-2'>Primary <br /><h5 className='fw-bold position-absolute'>+62129302434</h5></p>
+                <p className='ms-2'>Primary <br /><h5 className='fw-bold position-absolute'>{user ? user.telephone : "-"}</h5></p>
                 <img className='mt-2 me-3' src="/images/trash.png" alt="" width={30} height={30}/>
             </div>
           </div>

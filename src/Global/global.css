@@ -99,6 +99,8 @@
   border-left: 3px solid #ffffff;
 }
 
+
+
 .ul {
   margin-left: -1vh;
 }
@@ -120,6 +122,11 @@
 
 .list-top:hover,
 .list-bottom:hover {
+  border-left: 7px solid #6379f4;
+  color: #6379f4;
+}
+
+.list-top:active{
   border-left: 7px solid #6379f4;
   color: #6379f4;
 }

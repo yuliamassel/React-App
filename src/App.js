@@ -10,13 +10,13 @@ import InputAmount from './Pages/Transfer/InputAmount';
 import InputFilled from './Pages/Transfer/InputFilled';
 import Comfirmation from './Pages/Comfirmation';
 import Profile from './Pages/Profile';
-import PersonalInfo from './Pages/PersonalInfo/PersonalInfo';
+import PersonalInfo from './Pages/PersonalInformation/PersonalInfo'
 import RequireAuth from './Components/RequireAuth/RequireAuth';
 import Pin from './Pages/CreatePin/Pin';
 import PinSucces from './Pages/CreatePin/PinSucces';
-import ChangePin from './Pages/PersonalInfo/ChangePin';
-import NewPin from './Pages/PersonalInfo/NewPin';
-import ManagePn from './Pages/PersonalInfo/ManagePn';
+import ChangePin from './Pages/PersonalInformation/ChangePin';
+import NewPin from './Pages/PersonalInformation/NewPin';
+import ManagePn from './Pages/PersonalInformation/ManagePn';
 
 const App = () => {
   return (

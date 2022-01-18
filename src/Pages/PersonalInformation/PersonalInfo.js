@@ -1,18 +1,27 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
 
 const PersonalInfo = () => {
 
-  const [info, setInfo] = useState
-  const navigate = useNavigate()
+  const [user, setUser]= useState(null)
 
-  useEffect (()=>{
-    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users`)
-  })
+  useEffect(()=>{
+    const userFromLS = JSON.parse(localStorage.getItem("user"))
+    // console.log(userFromLS);
+    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/${userFromLS.id}`)
+    .then((res) => {
+      const result = res.data.result;
+      console.log(result);
+      setUser(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  },[])
 
   return (
     <div className="body">
@@ -27,16 +36,13 @@ const PersonalInfo = () => {
           </p>
           <div className="detail">
           <div className="search-user ms-4 mb-3">
-              <p className="ms-3 mt-2">First Name <br /><h5 className="fw-bold fs-6">Christine</h5></p>            
+              <p className="ms-3 mt-2">Ussername <br /><h5 className="fw-bold fs-6">{user ? user.username : ""}</h5></p>            
           </div>
           <div className="search-user ms-4 mb-3">
-              <p className="ms-3 mt-2">Last Name <br /><h5 className="fw-bold fs-6">Aguilera</h5></p>            
-          </div>
-          <div className="search-user ms-4 mb-3">
-              <p className="ms-3 mt-2 ">Verified E-mail<br /><h5 className="fw-bold fs-6">Aguilera@gmail.com</h5></p>            
+              <p className="ms-3 mt-2 ">Verified E-mail<br /><h5 className="fw-bold fs-6">{user ? user.email : "-"}</h5></p>            
           </div>
           <div className="search-user d-flex justify-content-between ms-4 mb-3">
-              <p className="ms-3 mt-2 ">Phone Number <br /><h5 className="fw-bold fs-6">+62 874-098-233</h5></p>    
+              <p className="ms-3 mt-2 ">Phone Number <br /><h5 className="fw-bold fs-6">{user ? user.telephone : "-"}</h5></p>    
               <Link to="/Manage-Phone-Number" className="text-decoration-none mt-4 me-5">Manage</Link>        
           </div>
           </div>
