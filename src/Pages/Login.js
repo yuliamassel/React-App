@@ -29,7 +29,7 @@ const Login = () => {
 
   const handleClick = () =>{
     setLoading(true)
-    axios.post(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/login`, form)
+    axios.post(`${process.env.REACT_APP_BACKEND_ZWALLET}/login`, form)
     // axios({
     //   baseURL: `${process.env.REACT_APP_BACKEND_ZWALLET}`,
     //   data: {

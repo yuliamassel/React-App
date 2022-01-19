@@ -124,6 +124,7 @@
 .list-bottom:hover {
   border-left: 7px solid #6379f4;
   color: #6379f4;
+  cursor: pointer;
 }
 
 .list-top:active{

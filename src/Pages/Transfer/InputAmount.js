@@ -1,5 +1,6 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import axios from "axios"
+import { useNavigate, useParams } from "react-router-dom";
 import Button from "../../Components/Button/Index";
 import Footer from "../../Components/Footer";
 import Input from "../../Components/Input/Input";
@@ -8,7 +9,19 @@ import Sidebar from "../../Components/Sidebar";
 
 const InputAmount = () => {
 
+  const {id} = useParams()
+  const userFromLS = JSON.parse(localStorage.getItem("user"))
   const navigate = useNavigate()
+  // const [detailTransfer, setDetailTransfer] = useState({})
+  // const [balance, setBalance] = useState([])
+
+  useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/${userFromLS}`)
+    .then((res)=>{
+      const result = res.data
+      console.log(result);
+    })
+  })
   
 
   const handleClick = () =>{
