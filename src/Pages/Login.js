@@ -29,7 +29,7 @@ const Login = () => {
 
   const handleClick = () =>{
     setLoading(true)
-    axios.post(`${process.env.REACT_APP_BACKEND_ZWALLET}/login`, form)
+    axios.post(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/login`, form)
     // axios({
     //   baseURL: `${process.env.REACT_APP_BACKEND_ZWALLET}`,
     //   data: {
@@ -50,11 +50,11 @@ const Login = () => {
     .catch((err)=>{
       setLoading(false)
       console.log(err.response);
-      if(err.response.status === 403){
-        setErrorMsg(err.response.data.message)
-    }else{
-        setErrorMsg('internal server error')
-    }
+    //   if(err.response.status === 403){
+    //     setErrorMsg(err.response.data.message)
+    // }else{
+    //     setErrorMsg('internal server error')
+    // }
     })
   }
 
