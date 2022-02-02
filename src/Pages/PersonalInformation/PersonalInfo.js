@@ -10,11 +10,14 @@ const PersonalInfo = () => {
   const [user, setUser]= useState(null)
 
   useEffect(()=>{
-    const userFromLS = JSON.parse(localStorage.getItem("user"))
+    const token = localStorage.getItem("token")
+    const config = {
+      headers : {Authorization : `Bearer ${token}`}
+    }
     // console.log(userFromLS);
-    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/${userFromLS.id}`)
+    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/profile/`, config)
     .then((res) => {
-      const result = res.data.result;
+      const result = res.data.data;
       console.log(result);
       setUser(result);
     })

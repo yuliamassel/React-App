@@ -7,18 +7,22 @@ import Graphic from "../Components/Graphic";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import TransactionHistory from "../Components/TsHistory";
+// import { axiosInstance } from "./API/Axios";
 
 const Home = () => {
 
-  const [user, setUser]= useState(null)
+  const [user, setUser]= useState()
 
   useEffect(()=>{
-    const userFromLS = JSON.parse(localStorage.getItem("user"))
+    const token = localStorage.getItem("token")
+    const config = {
+      headers : {Authorization : `Bearer ${token}`}
+    }
     // console.log(userFromLS);
-    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/${userFromLS.id}`)
+    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/profile`, config)
     .then((res) => {
-      const result = res.data.result;
-      console.log(result);
+      const result = res.data.data;
+      console.log(res.data.data);
       setUser(result);
     })
     .catch((err) => {

@@ -5,6 +5,7 @@ import Button from "../Components/Button/Index";
 import "../Global/global.css"
 import Input from "../Components/Input/Input";
 import Image from "./handphone.png";
+// import { axiosInstance } from "./API/Axios";
 
 
 const Login = () => {
@@ -43,18 +44,18 @@ const Login = () => {
       setLoading(false)
       const result = res.data.data
       console.log(result);
-      localStorage.setItem('auth', "1")
-      localStorage.setItem('user', JSON.stringify(result))
+      localStorage.setItem('token', result.token)
+      // axiosInstance.defaults.headers.common{'Authorization'} = `Bearer` + result.token;
       navigate('/home')
     })
     .catch((err)=>{
       setLoading(false)
       console.log(err.response);
-    //   if(err.response.status === 403){
-    //     setErrorMsg(err.response.data.message)
-    // }else{
-    //     setErrorMsg('internal server error')
-    // }
+      if(err.response.status === 403){
+        setErrorMsg(err.response.data.message)
+    }else{
+        setErrorMsg('internal server error')
+    }
     })
   }
 

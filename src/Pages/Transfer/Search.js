@@ -13,8 +13,12 @@ const Search = () => {
   const querySearch = searchParams.get("search");
 
   useEffect(() => {
+    const token = localStorage.getItem("token")
+    const config = {
+      headers : {Authorization : `Bearer ${token}`}
+    }
     axios
-      .get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users?limit=11`)
+      .get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users?limit=5`, config)
       .then((res) => {
         const result = res.data.data;
         setUsers(result);
@@ -25,11 +29,16 @@ const Search = () => {
   }, []);
 
   useEffect(
+    
     () => {
+      const token = localStorage.getItem("token")
+      const config = {
+        headers : {Authorization : `Bearer ${token}`}
+      }
       if (querySearch) {
         axios
         .get(
-          `${process.env.REACT_APP_BACKEND_ZWALLET}/users?username=${querySearch}`
+          `${process.env.REACT_APP_BACKEND_ZWALLET}/users?username=${querySearch}`,config
         )
         .then((res) => {
           const result = res.data.data;

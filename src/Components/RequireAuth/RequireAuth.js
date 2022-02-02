@@ -3,7 +3,7 @@ import {Navigate} from 'react-router-dom'
 
 const RequireAuth = ({children}) => {
    
-    let auth = localStorage.getItem('auth')
+    let auth = localStorage.getItem('token')
     // let location = useLocation();
   
     if (!auth) {

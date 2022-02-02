@@ -13,13 +13,13 @@ const InputAmount = () => {
   const userFromLS = JSON.parse(localStorage.getItem("user"))
   const navigate = useNavigate()
   // const [detailTransfer, setDetailTransfer] = useState({})
-  // const [balance, setBalance] = useState([])
+  const [ballance, setBallance] = useState([])
 
   useEffect(()=>{
     axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/${userFromLS}`)
     .then((res)=>{
-      const result = res.data
-      console.log(result);
+      const result = res.data[1].ballance
+      setBallance(result);
     })
   })
   

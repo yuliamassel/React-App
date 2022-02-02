@@ -28,8 +28,7 @@ const SignUp = () => {
     axios.post(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/register`, form)
     .then((res)=>{
       const result = res.data.data
-      localStorage.setItem('auth', "1")
-      localStorage.setItem('user', JSON.stringify(result))
+      console.log(result);
       navigate('/login')
     })
     .catch((err)=>{
