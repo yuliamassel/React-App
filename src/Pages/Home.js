@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+// import axios from "axios";
 import Balance from "../Components/Balance";
 import Footer from "../Components/Footer";
 import "../Global/global.css";
@@ -7,29 +7,21 @@ import Graphic from "../Components/Graphic";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import TransactionHistory from "../Components/TsHistory";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { GetUser } from "../redux/action/users";
 // import { axiosInstance } from "./API/Axios";
 
 const Home = () => {
 
-  const [user, setUser]= useState()
+  // const [user, setUser]= useState()
+  const dispatch = useDispatch()
+
+  const { data, loading, error } = useSelector((state) => state.GetUser)
 
   useEffect(()=>{
-    const token = localStorage.getItem("token")
-    const config = {
-      headers : {Authorization : `Bearer ${token}`}
-    }
-    // console.log(userFromLS);
-    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/profile`, config)
-    .then((res) => {
-      const result = res.data.data;
-      console.log(res.data.data);
-      setUser(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  },[])
- 
+    dispatch(GetUser())
+  },[dispatch]);
   
   return (
     <div className='body'>
@@ -37,7 +29,7 @@ const Home = () => {
       <div className="container d-flex flex-row">
           <Sidebar/>
           <div className="w-100 h-100 d-flex flex-row flex-wrap">
-          <Balance telephone={user ? user.telephone : "-"} ballance={user ? user.ballance : 0}/>
+          <Balance telephone={data ? data.telephone : "-"} ballance={data ? data.ballance : 0}/>
           <Graphic/>
           <TransactionHistory/>
          </div>

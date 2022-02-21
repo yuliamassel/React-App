@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import {Link, useNavigate} from 'react-router-dom'
-import axios from "axios";
+// import axios from "axios";
 import Button from "../Components/Button/Index";
 import "../Global/global.css"
 import Input from "../Components/Input/Input";
 import Image from "./handphone.png";
+import { useDispatch, useSelector } from "react-redux";
+import { UserLogin } from "../redux/action/Auth";
+// import FullPageLoader from '../Components/PageLoader/Loader'
 // import { axiosInstance } from "./API/Axios";
 
 
@@ -13,9 +16,15 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [loading, setLoading] = useState(false)
+  // const config = {
+  //   headers : {Authorization : `Bearer ${token}`}
+  // }
+  const {loading } = useSelector((state) => state.UserLogin)
+  // console.log(data);
+  // const [loading, setLoading] = useState(false)
   const [errorMsg , setErrorMsg]= useState("")
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleChange = (e) => {
     setFrom({
@@ -23,40 +32,29 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
+  
+  // const token = localStorage.setItem('token')
 
-  useEffect(()=>{
+  const FormAddUser = new FormData()
+    FormAddUser.append('email', form.email)
+    FormAddUser.append('password', form.password)
 
-  })
+    useEffect(()=>{
+      // console.log(data.data.token);
+      // if (data.data.token !== undefined) {
+      //   window.location.replace('/home')
+      // }
+      if (localStorage.getItem('token')) {
+        navigate('/home')
+      }
+    },[])
 
   const handleClick = () =>{
-    setLoading(true)
-    axios.post(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/login`, form)
-    // axios({
-    //   baseURL: `${process.env.REACT_APP_BACKEND_ZWALLET}`,
-    //   data: {
-    //     email: form.email, 
-    //     password: form.password
-    //   },
-    //   method: 'POST',
-    //   url: '/user/login'
-    // })
-    .then((res)=>{
-      setLoading(false)
-      const result = res.data.data
-      console.log(result);
-      localStorage.setItem('token', result.token)
-      // axiosInstance.defaults.headers.common{'Authorization'} = `Bearer` + result.token;
-      navigate('/home')
-    })
-    .catch((err)=>{
-      setLoading(false)
-      console.log(err.response);
-      if(err.response.status === 403){
-        setErrorMsg(err.response.data.message)
-    }else{
-        setErrorMsg('internal server error')
-    }
-    })
+    // setLoading(true)
+    dispatch(UserLogin({
+      form
+    }))
+    navigate('/home')
   }
 
   return (
@@ -119,9 +117,10 @@ const Login = () => {
           </div>
           {/* {errorMsg && <p className="text-danger">{errorMsg}</p>} */}
           <Button className="btn w-75 mt-4 ms-5" isLoading={loading} onClick={handleClick}>Login</Button>
-          <p className="ms-5 mt-3 text-decoration-none">Dont have an account? Let's <Link to="/signup"> Sign Up</Link></p>
+          <p className="ms-5 mt-3 text-decoration-none">Dont have an account? Let's <Link to="/signup" className="text text-decoration-none text-primary"> Sign Up</Link></p>
         </div>
       </div>
+      {/* <FullPageLoader/> */}
     </div>
   );
 };

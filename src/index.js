@@ -1,17 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css'
-import './fonts/type/NunitoSans-Regular.ttf'
-import './fonts/type/NunitoSans-Bold.ttf'
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "./fonts/type/NunitoSans-Regular.ttf";
+import "./fonts/type/NunitoSans-Bold.ttf";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import Store from "./redux/Store";
+// import { PersistGate } from 'redux-persist/integration/react'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={Store}>
+      <App />
+    </Provider>,
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

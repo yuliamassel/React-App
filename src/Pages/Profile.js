@@ -42,7 +42,7 @@ const Profile = () => {
             <Sidebar/>
             <div className="shape big-box d-flex flex-column justify-content-center align-items-center mt-4">
                 <img className='mb-1 mt-5' src="images/Christine.svg" alt="" width="80" height="80"/>
-                <p>Edit</p>
+                <p><Link to='/My-Profile' className='desc'>Edit</Link></p>
                 <h5 className='fw-bold fs-6'>{user ? user.username : ""}</h5>
                 <p className="desc">{user ? user.telephone: "-"}</p>
                 <div className="choice mb-3"><p className='desc fs-6 ms-1 mt-2'>Personal Information</p><Link to="/Personal-Info"> <img className='mt-2 ms-5' src="images/arrow-left.svg" alt="" width="28" height="28"/></Link></div>

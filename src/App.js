@@ -17,6 +17,7 @@ import PinSucces from './Pages/CreatePin/PinSucces';
 import ChangePin from './Pages/PersonalInformation/ChangePin';
 import NewPin from './Pages/PersonalInformation/NewPin';
 import ManagePn from './Pages/PersonalInformation/ManagePn';
+import EditProfile from './Pages/EditProfile';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="Input-Filled" element={<RequireAuth><InputFilled/></RequireAuth>}/>
         <Route path="Comfirmation" element={<RequireAuth><Comfirmation/></RequireAuth>}/>
         <Route path="Profile" element={<RequireAuth><Profile/></RequireAuth>}/>
+        <Route path='My-Profile' element={<RequireAuth><EditProfile/></RequireAuth>}/>
         <Route path="Personal-Info" element={<RequireAuth><PersonalInfo/></RequireAuth>}/>
         <Route path="Change-PIN" element={<RequireAuth><ChangePin/></RequireAuth>}/>
         <Route path="New-PIN" element={<RequireAuth><NewPin/></RequireAuth>}/>

@@ -9,20 +9,7 @@ import Sidebar from "../../Components/Sidebar";
 
 const InputAmount = () => {
 
-  const {id} = useParams()
-  const userFromLS = JSON.parse(localStorage.getItem("user"))
   const navigate = useNavigate()
-  // const [detailTransfer, setDetailTransfer] = useState({})
-  const [ballance, setBallance] = useState([])
-
-  useEffect(()=>{
-    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/${userFromLS}`)
-    .then((res)=>{
-      const result = res.data[1].ballance
-      setBallance(result);
-    })
-  })
-  
 
   const handleClick = () =>{
     navigate('/input-filled')

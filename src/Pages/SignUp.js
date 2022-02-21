@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import {Link, useNavigate} from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 import Button from "../Components/Button/Index";
 import "../Global/global.css";
 import Input from "../Components/Input/Input";
 import Image from "./handphone.png";
+import { useDispatch } from "react-redux";
+import { RegisterUser } from "../redux/action/Auth";
 
 
 const SignUp = () => {
@@ -14,7 +16,14 @@ const SignUp = () => {
     email: '',
     password:''
   })
+
+  const FormAddUser = new FormData()
+  FormAddUser.append('username', form.username)
+  FormAddUser.append('email', form.email)
+  FormAddUser.append('password', form.password)
+
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleChange = (e) =>{
     setForm({
@@ -25,15 +34,8 @@ const SignUp = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    axios.post(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/register`, form)
-    .then((res)=>{
-      const result = res.data.data
-      console.log(result);
-      navigate('/login')
-    })
-    .catch((err)=>{
-      console.log(err.response);
-    })
+    dispatch(RegisterUser({form}))
+    navigate('/login', {replace: true})
   }
 
 
@@ -106,7 +108,7 @@ const SignUp = () => {
           <Button className="btn mt-4 ms-4" type="submit">SignUp</Button>
           <p className="ms-4 mt-3">
               Already have an account? Let’s
-              <Link to="/login"> Login</Link>
+              <Link to="/login" className="text text-decoration-none text-primary"> Login</Link>
             </p>
           </form>
         </div>

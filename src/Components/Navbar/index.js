@@ -1,8 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
+// import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { GetUser } from "../../redux/action/users";
 
 const Navbar = () => {
   
-  const { user } = localStorage.getItem("token");
+  
+  // const [user, setUser]= useState(null)
+  const dispatch = useDispatch()
+
+  const {data, loading, error} = useSelector((state)=> state.GetUser)
+
+  useEffect(()=>{
+    dispatch(GetUser())
+  },[dispatch])
 
   return (
     <nav className="navbar Nav ">
@@ -16,8 +28,8 @@ const Navbar = () => {
           className="skip"
         />
         <div>
-          <p className="h fw-bold">{user ? user.username : ""} </p>
-          <span>{user ? user.telephone : "-"}</span>
+          <p className="h fw-bold">{data ? data.username : ""} </p>
+          <span>{data ? data.telephone : "-"}</span>
           <img
             className="position-absolute ms-3"
             src="images/bell.svg"
