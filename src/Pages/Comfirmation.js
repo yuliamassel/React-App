@@ -1,12 +1,55 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+// import { axiosInstance } from "./API/Axios";
+import axios from "axios"
+import { useNavigate } from "react-router-dom";
 import Button from "../Components/Button/Index";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 
 const Comfirmation = () => {
+
+  const [transfer, setTransfer] = useState({});
+  const dataTransfer = JSON.parse(localStorage.getItem('transaction'));
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    const receiver = JSON.parse(localStorage.getItem('receiver'));
+    // console.log(dataTransfer.insertId, "Ini data transfer");
+    
+
+    const [comfirm, setComfirm] = useState({
+      receiver: '',
+      telephone: '',
+      amount: 0,
+      date: '',
+      notes: ''
+  })
+
+
+    useEffect(()=>{
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const config = {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      };
+      axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/user/${userInfo.id}}`,config)
+      .then((res)=>{
+          const resultBallance = res.data?.data.ballance
+          setComfirm(resultBallance)
+      })
+      .catch((err)=>{
+          console.log(err);
+      })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  
   const navigate = useNavigate();
+  const handleClick = () =>{
+    // localStorage.removeItem('transaction')
+    localStorage.removeItem('receiver')
+    localStorage.removeItem('transaction')
+    localStorage.removeItem('comfirmation')
+    navigate('/home')
+  }
   return (
     <div className="body">
       <Navbar />
@@ -22,7 +65,7 @@ const Comfirmation = () => {
               alt=""
             />
             <h6 className="fw-bold mt-3">
-              Samuel Suhi <br /> <p className="desc">+62789564234</p>
+              {receiver.username} <br /> <p className="desc">{receiver.telephone}</p>
             </h6>
           </div>
           <h5 className="p-4 fs-6 fw-bold">Details</h5>
@@ -30,30 +73,28 @@ const Comfirmation = () => {
             <div className="search-user ms-4 mb-3">
               <p className="ms-3 mt-2">
                 Amount <br />
-                <h5 className="fw-bold fs-6">Rp.100.000</h5>
+                <h5 className="fw-bold fs-6">{dataTransfer.amount}</h5>
               </p>
             </div>
             <div className="search-user ms-4 mb-3">
               <p className="ms-3 mt-2">
                 Balance Left <br />
-                <h5 className="fw-bold fs-6">Rp.20.000</h5>
+                <h5 className="fw-bold fs-6">{comfirm.ballance}</h5>
               </p>
             </div>
             <div className="search-user ms-4 mb-3">
               <p className="ms-3 mt-2 ">
                 Date & Time <br />
-                <h5 className="fw-bold fs-6">-</h5>
+                <h5 className="fw-bold fs-6">{dataTransfer.create_at}</h5>
               </p>
             </div>
             <div className="search-user ms-4 mb-3">
               <p className="ms-3 mt-2 ">
                 Notes <br />
-                <h5 className="fw-bold fs-6">For Buying Some Socks</h5>
+                <h5 className="fw-bold fs-6">{dataTransfer.notes}</h5>
               </p>
             </div>
-            <Button className="btn-small my-5" onClick={ navigate("/modal")}>
-              Continue
-            </Button>
+            <Button className="btn-small my-5" onClick={handleClick}>Continue</Button>
           </div>
         </div>
       </div>

@@ -18,6 +18,7 @@ const Home = () => {
   const dispatch = useDispatch()
 
   const { data, loading, error } = useSelector((state) => state.GetUser)
+  console.log(data, "data di HOME");
 
   useEffect(()=>{
     dispatch(GetUser())

@@ -45,9 +45,9 @@ export const UpdateUserError = ()=>{
 export const GetUser = ()=>{
     return (dispatch) =>{
         dispatch(GetUserRequest())
-        const token = localStorage.getItem("token")
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"))
         const config = {
-          headers : {Authorization : `Bearer ${token}`}
+          headers : {Authorization : `Bearer ${userInfo.token}`}
         }
         return api.get('/users/profile', config)
         .then((res)=>{
@@ -64,7 +64,7 @@ export const GetUser = ()=>{
 export const UpdateUser = (data)=>{
     return (dispatch) =>{
         dispatch(UpdateUserRequest())
-        return api.post('/users', data)
+        return api.put('/users', data)
         .then((res)=>{
             console.log("ini hasil update",res);
             // const data = res.data.data

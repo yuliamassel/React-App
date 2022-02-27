@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
 import Home from './Pages/Home';
@@ -18,8 +18,14 @@ import ChangePin from './Pages/PersonalInformation/ChangePin';
 import NewPin from './Pages/PersonalInformation/NewPin';
 import ManagePn from './Pages/PersonalInformation/ManagePn';
 import EditProfile from './Pages/EditProfile';
+import { io } from 'socket.io-client';
 
 const App = () => {
+
+  useEffect(()=>{
+    const socket = io("http://localhost:2002")
+  },[])
+
   return (
     <BrowserRouter>
       <Routes>

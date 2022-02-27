@@ -13,12 +13,12 @@ const Search = () => {
   const querySearch = searchParams.get("search");
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"))
     const config = {
-      headers : {Authorization : `Bearer ${token}`}
+      headers : {Authorization : `Bearer ${userInfo.token}`}
     }
     axios
-      .get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users?limit=5`, config)
+      .get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users?limit=5&page=6`, config)
       .then((res) => {
         const result = res.data.data;
         setUsers(result);
@@ -31,9 +31,9 @@ const Search = () => {
   useEffect(
     
     () => {
-      const token = localStorage.getItem("token")
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"))
       const config = {
-        headers : {Authorization : `Bearer ${token}`}
+        headers : {Authorization : `Bearer ${userInfo.token}`}
       }
       if (querySearch) {
         axios

@@ -6,7 +6,8 @@ const Sidebar = () => {
   const navigate = useNavigate()
 
   const handleLogout= ()=>{
-    localStorage.removeItem('token')
+    localStorage.removeItem('userInfo')
+    localStorage.removeItem('tempTransfer')
     navigate('/login')
   }
 

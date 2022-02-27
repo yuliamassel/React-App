@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const api = axios.create({
     baseURL: process.env.REACT_APP_BACKEND_ZWALLET
 })
+
 
 export const UserLoginRequest = ()=>{
     return {
@@ -44,6 +46,7 @@ export const RegisterFail = ()=>{
 
 
 export const UserLogin = (data)=>{
+    // const navigate = useNavigate()
     console.log('hasilnya',data);
     return (dispatch) =>{
         dispatch(UserLoginRequest())
@@ -51,7 +54,7 @@ export const UserLogin = (data)=>{
         .then((res)=>{
             const result = res.data.data
             console.log(result);
-            localStorage.setItem('token', result.token)
+            localStorage.setItem('userInfo', JSON.stringify({id:result.id, token:result.token}))
             const data = res.data
             dispatch(UserLoginSucces(data))
         }).catch((err)=>{

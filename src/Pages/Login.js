@@ -25,6 +25,7 @@ const Login = () => {
   const [errorMsg , setErrorMsg]= useState("")
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  let userInfo = localStorage.getItem('userInfo')?JSON.parse(localStorage.getItem('userInfo')): {}
 
   const handleChange = (e) => {
     setFrom({
@@ -44,10 +45,10 @@ const Login = () => {
       // if (data.data.token !== undefined) {
       //   window.location.replace('/home')
       // }
-      if (localStorage.getItem('token')) {
+      if (userInfo.token !== undefined) {
         navigate('/home')
       }
-    },[])
+    },[userInfo])
 
   const handleClick = () =>{
     // setLoading(true)
