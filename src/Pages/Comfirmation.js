@@ -6,23 +6,19 @@ import Button from "../Components/Button/Index";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
+import socket from '../Helper/socket'
 
 const Comfirmation = () => {
 
-  const [transfer, setTransfer] = useState({});
+  // const [transfer, setTransfer] = useState({});
   const dataTransfer = JSON.parse(localStorage.getItem('transaction'));
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    // const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     const receiver = JSON.parse(localStorage.getItem('receiver'));
     // console.log(dataTransfer.insertId, "Ini data transfer");
+    // const [notif, setNotif] = useState()
     
 
-    const [comfirm, setComfirm] = useState({
-      receiver: '',
-      telephone: '',
-      amount: 0,
-      date: '',
-      notes: ''
-  })
+    const [comfirm, setComfirm] = useState([])
 
 
     useEffect(()=>{
@@ -30,9 +26,10 @@ const Comfirmation = () => {
       const config = {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       };
-      axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/user/${userInfo.id}}`,config)
+      axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/${userInfo.id}`,config)
       .then((res)=>{
-          const resultBallance = res.data?.data.ballance
+          const resultBallance = res.data?.data
+          // console.log("BALLANCE", resultBallance);
           setComfirm(resultBallance)
       })
       .catch((err)=>{
@@ -41,6 +38,18 @@ const Comfirmation = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(()=>{
+    // console.log(socket.rooms, 'socket');
+    socket.on('Continue', (data)=>{
+      console.log(data,"INI SOCKET");
+      // setNotif(notif.concat({message: `Kamu Menerima ${dataTransfer.amount} dari ${comfirm.username}`}))
+      // setNotif(notif.concat({message: data.message}))
+    })
+  })
+
+
+  
+  
   
   const navigate = useNavigate();
   const handleClick = () =>{
@@ -48,6 +57,7 @@ const Comfirmation = () => {
     localStorage.removeItem('receiver')
     localStorage.removeItem('transaction')
     localStorage.removeItem('comfirmation')
+    // socket.emit('Transfer', {sender: comfirm.id, reaceiver: receiver.id, amount: dataTransfer.amount})
     navigate('/home')
   }
   return (

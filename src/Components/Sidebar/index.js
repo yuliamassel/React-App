@@ -1,7 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const { pathname } = useLocation();
+  const splitLocation = pathname.split("/");
 
   const navigate = useNavigate()
 
@@ -23,7 +25,7 @@ const Sidebar = () => {
             </h5>
           </li>
           </Link>
-          <Link to="/search-receiver" className="text-decoration-none">
+          <Link to="/search-receiver" className="text-decoration-none"  activeClassName="selected">
           <li className="list-top pe-4">
             <h5 className="fw-bold">
               <img src="/images/arrow-up.svg" alt="" /> Transfer
@@ -35,7 +37,7 @@ const Sidebar = () => {
               <img src="/images/plus.svg" alt="" /> Top Up
             </h5>
           </li>
-          <Link to="/Profile" className="text-decoration-none">
+          <Link to="/Profile" className="text-decoration-none"  activeClassName="selected">
           <li className="list-top pe-4">
             <h5 className="fw-bold">
               <img src="/images/user.svg" alt="" /> Profile

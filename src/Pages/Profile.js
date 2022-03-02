@@ -10,12 +10,10 @@ const Profile = () => {
     const [user, setUser]= useState(null)
 
     useEffect(()=>{
-      const token = localStorage.getItem("token")
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const config = {
-        headers : {Authorization : `Bearer ${token}`}
-      }
-      // const userFromLS = JSON.parse(localStorage.getItem("user"))
-      // console.log(userFromLS);
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      };
       axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/profile/`,config)
       .then((res) => {
         const result = res.data.data;

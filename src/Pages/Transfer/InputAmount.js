@@ -6,6 +6,7 @@ import Footer from "../../Components/Footer";
 import Input from "../../Components/Input/Input";
 import Navbar from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
+// import socket from '../Helper/socket'
 
 const InputAmount = () => {
   // const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -66,6 +67,14 @@ const InputAmount = () => {
   //       console.log("ada error", err);
   //     });
   // }, []);
+  // useEffect(()=>{
+  //   console.log(socket.rooms, 'socket');
+  //   socket.on('Continue', (data)=>{
+  //     console.log(data,"INI SOCKET");
+  //     setNotif(notif.concat({message: `Kamu Menerima ${dataTransfer.amount} dari ${comfirm.username}`}))
+  //     setNotif(notif.concat({message: data.message}))
+  //   })
+  // })
 
   const handleTransfer = () => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -85,13 +94,14 @@ const InputAmount = () => {
           const result = res.data.data;
           console.log("ini COMFIRMATION", result);
           localStorage.setItem("transaction", JSON.stringify(result));
+          // socket.emit('Transfer', {sender: userInfo.id, reaceiver:id, amount: form.amount})
           navigate("/Comfirmation");
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      setErrorMsg("Please input valid amount only!");
+      setErrorMsg("sorry you entered an empty input");
     }
   };
 

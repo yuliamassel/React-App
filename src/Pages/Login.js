@@ -21,8 +21,8 @@ const Login = () => {
   // }
   const {loading } = useSelector((state) => state.UserLogin)
   // console.log(data);
-  // const [loading, setLoading] = useState(false)
-  const [errorMsg , setErrorMsg]= useState("")
+  // const [Loading, setLoading] = useState(false)
+  // const [errorMsg , setErrorMsg]= useState("")
   const navigate = useNavigate()
   const dispatch = useDispatch()
   let userInfo = localStorage.getItem('userInfo')?JSON.parse(localStorage.getItem('userInfo')): {}
@@ -41,10 +41,6 @@ const Login = () => {
     FormAddUser.append('password', form.password)
 
     useEffect(()=>{
-      // console.log(data.data.token);
-      // if (data.data.token !== undefined) {
-      //   window.location.replace('/home')
-      // }
       if (userInfo.token !== undefined) {
         navigate('/home')
       }
@@ -102,7 +98,7 @@ const Login = () => {
             type="email"
             placeholder="Enter your e-mail"
           />
-          {errorMsg && <p className="text-danger">{errorMsg}</p>}
+          {/* {errorMsg && <p className="text-danger">{errorMsg}</p>} */}
           <div>
           <img className="position-absolute ms-3" src="images/lock.svg" alt="" />
           <Input

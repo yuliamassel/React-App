@@ -1,16 +1,17 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 // import axios from "axios";
+// import Modal from "../Modal";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { GetUser } from "../../redux/action/users";
+import { BiBell} from "react-icons/bi";
 
 const Navbar = () => {
   
-  
-  // const [user, setUser]= useState(null)
+  const [open, setOpen] = useState(false)
   const dispatch = useDispatch()
 
-  const {data, loading, error} = useSelector((state)=> state.GetUser)
+  const {data} = useSelector((state)=> state.GetUser)
 
   useEffect(()=>{
     dispatch(GetUser())
@@ -21,7 +22,7 @@ const Navbar = () => {
       <div className="container">
         <h2 className="title">Zwallet</h2>
         <img
-          src="http://localhost:3000/images/robert.png"
+           src={data.photo ? data.photo : '/images/Bobi.png'}
           alt=""
           width="45"
           height="45"
@@ -30,11 +31,8 @@ const Navbar = () => {
         <div>
           <p className="h fw-bold">{data ? data.username : ""} </p>
           <span>{data ? data.telephone : "-"}</span>
-          <img
-            className="position-absolute ms-3"
-            src="images/bell.svg"
-            alt=""
-          />
+          <BiBell size={30} className="icon-button" onClick={()=> setOpen(!open)}/>
+          {/* <Modal/> */}
         </div>
       </div>
     </nav>

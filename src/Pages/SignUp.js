@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Link, useNavigate} from 'react-router-dom'
 // import axios from 'axios'
 import Button from "../Components/Button/Index";
@@ -7,6 +7,7 @@ import Input from "../Components/Input/Input";
 import Image from "./handphone.png";
 import { useDispatch } from "react-redux";
 import { RegisterUser } from "../redux/action/Auth";
+import socket from '../Helper/socket'
 
 
 const SignUp = () => {
@@ -31,6 +32,12 @@ const SignUp = () => {
       [e.target.name] : e.target.value
     })
   }
+
+  useEffect(()=>{
+    socket.on('message for new user',(message)=>{
+      console.log(message);
+    })
+  },[])
 
   const handleSubmit = (e) =>{
     e.preventDefault()
