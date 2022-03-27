@@ -43,7 +43,7 @@ const App = () => {
         <Route path="Change-PIN" element={<RequireAuth><ChangePin/></RequireAuth>}/>
         <Route path="New-PIN" element={<RequireAuth><NewPin/></RequireAuth>}/>
         <Route path="Manage-Phone-Number" element={<RequireAuth><ManagePn/></RequireAuth>}/>
-        <Route path='Landing-Page' element={<LandingPage/>}/>
+        <Route path='/' element={<LandingPage/>}/>
 
         <Route path="login" element={<Login/>}/>
         <Route path="SignUp" element={<SignUp/>}/>

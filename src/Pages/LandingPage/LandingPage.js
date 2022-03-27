@@ -1,16 +1,29 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Index";
 import "./landing.css";
 
 const LandingPage = () => {
+
+  const navigate = useNavigate()
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    if (e.target.innerText === 'Sign Up') {
+      navigate('/signup')
+    } else {
+      navigate('/login')
+    }
+  }
+
   return (
     <div className="landing">
       <div className="header">
         <div className="grup-top mx-5 px-5">
           <h3>Zwallet</h3>
           <div className="mt-4 me-5 pe-5">
-            <Button className="btn-login me-4">Login</Button>
-            <Button className="btn-signup">Sign Up</Button>
+            <Button onClick={handleClick} className="btn-login me-4">Login</Button>
+            <Button onClick={handleClick} className="btn-signup">Sign Up</Button>
           </div>
         </div>
         <div className="txt-landpage">
