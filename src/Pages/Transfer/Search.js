@@ -61,7 +61,7 @@ const Search = () => {
   return (
     <div className="body">
       <Navbar />
-      <div className="container d-flex flex-row">
+      <div className="container ps-5 ms-5  d-flex flex-row">
         <Sidebar />
         <div className="shape big-box mt-4">
           <h5 className="p-2 fw-bold">Search Receiver</h5>

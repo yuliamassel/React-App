@@ -8,7 +8,7 @@ const History = () => {
     return (
         <div className='body'>
           <Navbar/>
-        <div className="container d-flex flex-row">
+        <div className="container ps-5 ms-5  d-flex flex-row">
           <Sidebar/>
           <BoxAction>
             <h5 className='fw-bold p-3'>Transaction History</h5>

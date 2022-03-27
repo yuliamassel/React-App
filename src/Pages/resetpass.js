@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
 // import axios from "axios";
 import * as BsIcons from "react-icons/bs";
 import Button from "../Components/Button/Index";
@@ -7,14 +7,13 @@ import "../Global/global.css";
 import Input from "../Components/Input/Input";
 import Image from "./handphone.png";
 import { useDispatch, useSelector } from "react-redux";
-import { UserLogin } from "../redux/action/Auth";
+// import { UserLogin } from "../redux/action/Auth";
 // import FullPageLoader from '../Components/PageLoader/Loader'
 // import { axiosInstance } from "./API/Axios";
 
-const Login = () => {
+const ResetPass = () => {
   const [form, setFrom] = useState({
     email: "",
-    password: "",
   });
   // const config = {
   //   headers : {Authorization : `Bearer ${token}`}
@@ -23,11 +22,11 @@ const Login = () => {
   // console.log(data);
   // const [Loading, setLoading] = useState(false)
   // const [errorMsg , setErrorMsg]= useState("")
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  let userInfo = localStorage.getItem("userInfo")
-    ? JSON.parse(localStorage.getItem("userInfo"))
-    : {};
+  //   const navigate = useNavigate();
+  //   const dispatch = useDispatch();
+  //   let userInfo = localStorage.getItem("userInfo")
+  //     ? JSON.parse(localStorage.getItem("userInfo"))
+  //     : {};
 
   const handleChange = (e) => {
     setFrom({
@@ -40,29 +39,8 @@ const Login = () => {
 
   const FormAddUser = new FormData();
   FormAddUser.append("email", form.email);
-  FormAddUser.append("password", form.password);
 
-  useEffect(() => {
-    if (userInfo.token !== undefined) {
-      navigate("/home");
-    }
-  }, [userInfo]);
-
-  const handleClick = () => {
-    // setLoading(true)
-    dispatch(
-      UserLogin({
-        form,
-      })
-    );
-    navigate("/home");
-  };
-
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleShowPassword = () => {
-    setShowPassword(showPassword ? false : true);
-  };
+  const handleClick = () => {};
 
   return (
     <div className="container-fluid g-0 px-0 col-xl-12 col-lg-12 col-md-12 overflow-hidden">
@@ -70,7 +48,7 @@ const Login = () => {
         <div className="col d-none d-md-none d-lg-block wrapper">
           <h2 className="text-white ms-5 mt-3 fw-bold">Zwallet</h2>
           <img className="position-absolute" src="images/waves.png" alt="" />
-          <img className="ms-xl-5 ps-5 mt-3" src={Image} alt="" width="450" />
+          <img className="ms-xl-5 ps-5 mt-5" src={Image} alt="" width="450" />
           <h4 className="text-light text-center">
             App that Covering Banking Needs.
           </h4>
@@ -86,14 +64,15 @@ const Login = () => {
         </h2>
         <div className="col login-mob">
           <h4 className="p-4 fw-bold  d-none d-md-none d-lg-block">
-            Start Accessing Banking Needs <br />
-            With All Devices and All Platforms <br />
-            With 30.000+ Users
+            Did You Forgot Your Password?
+            <br />
+            Don’t Worry, You Can Reset Your <br />
+            Password In a Minutes.
           </h4>
           <p className="text ms-4 mb-5  d-none d-md-none d-lg-block">
-            Transfering money is eassier than ever, you can access <br />
-            Zwallet wherever you are. Desktop, laptop, mobile phone? <br />
-            we cover all of that for you!
+            To reset your password, you must type your e-mail and we <br /> will send a
+            link to your email and you will be directed to the <br /> reset password
+            screens.
           </p>
 
           <h4 className="d-block mt-3 d-md-block d-lg-none text-center fw-bold">
@@ -117,59 +96,14 @@ const Login = () => {
             placeholder="Enter your e-mail"
           />
           {/* {errorMsg && <p className="text-danger">{errorMsg}</p>} */}
-          <div>
-            {/* <img  src="images/lock.svg" alt="" /> */}
-            <BsIcons.BsFillLockFill
-              className="lock position-absolute ms-3"
-              size={25}
-            />
-            <Input
-              className="input-register ms-3 mb-5"
-              type={showPassword ? "text" : "password"}
-              name="password"
-              onChange={handleChange}
-              value={form.password}
-              placeholder="Enter your password"
-            />
-            {showPassword ? (
-              <BsIcons.BsEye
-                onClick={handleShowPassword}
-                className="form-icons bi-eye-slash position-absolute"
-                size={22}
-              />
-            ) : (
-              <BsIcons.BsEyeSlash
-                onClick={handleShowPassword}
-                className="form-icons bi-eye-slash position-absolute"
-                size={22}
-              />
-            )}
-            {/* <div className="forgot d-none d-lg-block"> */}
-            <p className="pf">
-            <Link to='/Reset-Password' className="text text-decoration-none text-secondary">
-              Forgot Password ?
-              </Link>
-            </p>
-            {/* </div> */}
-          </div>
           {/* {errorMsg && <p className="text-danger">{errorMsg}</p>} */}
           <Button
             className="btn w-75 mt-4 ms-5"
             isLoading={loading}
             onClick={handleClick}
           >
-            Login
+            Confirm
           </Button>
-          <p className="ms-5 mt-3 text-decoration-none">
-            Dont have an account? Let's{" "}
-            <Link
-              to="/signup"
-              className="text text-decoration-none text-primary"
-            >
-              {" "}
-              Sign Up
-            </Link>
-          </p>
         </div>
       </div>
       {/* <FullPageLoader/> */}
@@ -177,4 +111,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ResetPass;

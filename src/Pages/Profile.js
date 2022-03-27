@@ -36,10 +36,10 @@ const Profile = () => {
     return (
         <div className='body'>
        <Navbar/>
-        <div className="container d-flex flex-row">
+        <div className="container ps-5 ms-5  d-flex flex-row">
             <Sidebar/>
             <div className="shape big-box d-flex flex-column justify-content-center align-items-center mt-4">
-                <img className='mb-1 mt-5' src="images/Christine.svg" alt="" width="80" height="80"/>
+                <img className='mb-1 mt-5' src={user ? user.photo: "/public/images/blank-profile.png"} alt="" width="80" height="80"/>
                 <p><Link to='/My-Profile' className='desc'>Edit</Link></p>
                 <h5 className='fw-bold fs-6'>{user ? user.username : ""}</h5>
                 <p className="desc">{user ? user.telephone: "-"}</p>

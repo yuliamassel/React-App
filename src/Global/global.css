@@ -3,8 +3,8 @@
   background-color: #6379f4;
 }
 * {
-  overflow: hidden;
   font-family: "Nunito Sans", sans-serif;
+  overflow: hidden;
 }
 .body {
   background: #fafcff;
@@ -15,8 +15,8 @@
   border-bottom-right-radius: 25px;
   background: #ffffff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
+  /* border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px; */
 }
 :root {
   --bg:  #242526;
@@ -46,6 +46,19 @@
   transition: 0.2s ease-in;
   color: white;
 }
+.lock{
+  color: rgba(169, 169, 169, 0.6);
+  margin-top: -0.5rem!important;
+}
+.mail{
+  color: rgba(169, 169, 169, 0.6);
+}
+.form-icons{
+  color: rgba(169, 169, 169, 0.6);
+  right: 4rem;
+  margin-top: -0.5rem!important;
+
+}
 .input-register {
   width: 90%;
   padding-left: 50px;
@@ -63,14 +76,19 @@
 }
 
 .btn {
-  background: #dadada;
-  color: #aaa;
+  background: #DADADA;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  color: #88888F;
   font-weight: 500;
   width: 85%;
+  height: 7vh;
 }
 
 .btn:hover {
-  background-color: #6379f4;
+  background: #6379F4;
+box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+border-radius: 12px;
   color: #ffffff;
 }
 
@@ -228,6 +246,7 @@
 }
 
 .skip {
+  /* left: -50rem; */
   transform: translateX(31vw);
 }
 
@@ -400,9 +419,12 @@
   margin-left: 25vw;
 }
 
-.forgot{
-  transform: translate(35vw, -7vh);
-  font-size: 13px;
+.pf{
+  float: right;
+  margin-right: 4rem;
+  margin-top: -2rem;
+  text-decoration: none;
+  color: rgba(169, 169, 169, 0.6);
 }
 
   .pincode-input-text

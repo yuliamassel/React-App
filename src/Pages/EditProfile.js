@@ -45,7 +45,7 @@ const EditProfile = () => {
   return (
     <div className="body">
       <Navbar />
-      <div className="container d-flex flex-row">
+      <div className="container ps-5 ms-5  d-flex flex-row">
         <Sidebar />
         <div className="shape big-box d-flex flex-column justify-content-center align-items-center mt-4">
           <h5 className="fw-bold p-4">Edit Profile</h5>

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {Link, useNavigate} from 'react-router-dom'
 // import axios from 'axios'
+import * as BsIcons from "react-icons/bs";
 import Button from "../Components/Button/Index";
 import "../Global/global.css";
 import Input from "../Components/Input/Input";
@@ -45,6 +46,12 @@ const SignUp = () => {
     navigate('/login', {replace: true})
   }
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(showPassword ? false : true);
+  };
+
 
   return (
     <div className="container-fluid g-0 px-0 col-xl-12 col-lg-12 col-md-12 overflow-hidden">
@@ -52,7 +59,7 @@ const SignUp = () => {
         <div className="col  d-none d-md-none d-lg-block wrapper">
           <h2 className="text-white fw-bold ms-5 mt-3">Zwallet</h2>
           <img className="position-absolute" src="images/waves.png" alt="" />
-          <img className="ms-5 ps-5 my-1" src={Image} alt="" width="450" />
+          <img className="ms-5 ps-5 mt-5" src={Image} alt="" width="450" />
           <h4 className="text-light text-center">
             App that Covering Banking Needs.
           </h4>
@@ -79,7 +86,7 @@ const SignUp = () => {
           <p className="d-block d-md-block d-lg-none text-center mb-5">Login to your existing account to access
             all the features in Zwallet.</p>
           <form onSubmit={handleSubmit}>
-            <img className="position-absolute ms-4" src="images/person.svg" alt="" />
+            <img className="position-absolute ms-3" src="images/person.svg" alt="" />
           <Input
             className="input-register ms-3 mb-5"
             type="text"
@@ -89,7 +96,10 @@ const SignUp = () => {
             placeholder="Enter your username"
           />
           <div>
-          <img className="position-absolute ms-4" src="images/mail.svg" alt="" />
+          <BsIcons.BsEnvelope
+            className="mail position-absolute ms-3"
+            size={25}
+          />
           <Input
             className="input-register ms-3 mb-5"
             type="email"
@@ -100,17 +110,36 @@ const SignUp = () => {
           />
           </div>
           <div>
-          <img className="position-absolute ms-4" src="images/lock.svg" alt="" />
+          <BsIcons.BsFillLockFill
+              className="lock position-absolute ms-3"
+              size={25}
+            />
           <Input
             className="input-register ms-3 mb-5"
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
             onChange={handleChange}
             value={form.password}
             placeholder="Create your password"
           />
-          <img className="position-absolute me-5 eye" src="images/eye-crossed.svg" alt="" />
-          <p className="position-absolute d-none d-lg-block forgot">Forgot Password ?</p>
+          {showPassword ? (
+              <BsIcons.BsEye
+                onClick={handleShowPassword}
+                className="form-icons bi-eye-slash position-absolute"
+                size={22}
+              />
+            ) : (
+              <BsIcons.BsEyeSlash
+                onClick={handleShowPassword}
+                className="form-icons bi-eye-slash position-absolute"
+                size={22}
+              />
+            )}
+          <p className="pf">
+            <Link to='/Reset-Password' className="text text-decoration-none text-secondary">
+              Forgot Password ?
+              </Link>
+            </p>
           </div>
           <Button className="btn mt-4 ms-4" type="submit">SignUp</Button>
           <p className="ms-4 mt-3">

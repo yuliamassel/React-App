@@ -19,6 +19,8 @@ import NewPin from './Pages/PersonalInformation/NewPin';
 import ManagePn from './Pages/PersonalInformation/ManagePn';
 import EditProfile from './Pages/EditProfile';
 import { io } from 'socket.io-client';
+import LandingPage from './Pages/LandingPage/LandingPage';
+import ResetPass from './Pages/resetpass';
 
 const App = () => {
 
@@ -41,9 +43,11 @@ const App = () => {
         <Route path="Change-PIN" element={<RequireAuth><ChangePin/></RequireAuth>}/>
         <Route path="New-PIN" element={<RequireAuth><NewPin/></RequireAuth>}/>
         <Route path="Manage-Phone-Number" element={<RequireAuth><ManagePn/></RequireAuth>}/>
+        <Route path='Landing-Page' element={<LandingPage/>}/>
 
         <Route path="login" element={<Login/>}/>
         <Route path="SignUp" element={<SignUp/>}/>
+        <Route path='Reset-Password' element={<ResetPass/>}/>
         <Route path="Create-Pin" element={<Pin/>}/>
         <Route path="Pin-Succes" element={<PinSucces/>}/>
       </Routes>
