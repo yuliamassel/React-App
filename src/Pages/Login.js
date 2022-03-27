@@ -65,11 +65,10 @@ const Login = () => {
   };
 
   return (
-    <div className="container-fluid g-0 px-0 col-xl-12 col-lg-12 col-md-12 overflow-hidden">
-      <div className="row">
-        <div className="col d-none d-md-none d-lg-block wrapper">
+      <div className="container2">
+        <div className="col-6 d-none d-md-none d-lg-block wrapper">
           <h2 className="text-white ms-5 mt-3 fw-bold">Zwallet</h2>
-          <img className="position-absolute" src="images/waves.png" alt="" />
+          {/* <img className="position-absolute" src="images/waves.png" alt="" /> */}
           <img className="ms-xl-5 ps-5 mt-3" src={Image} alt="" width="450" />
           <h4 className="text-light text-center">
             App that Covering Banking Needs.
@@ -84,7 +83,7 @@ const Login = () => {
         <h2 className="title-mobile pt-5 mb-1 text-center d-block d-md-block d-lg-none ">
           Zwallet
         </h2>
-        <div className="col login-mob">
+        <div className="col-6 login-mob">
           <h4 className="p-4 fw-bold  d-none d-md-none d-lg-block">
             Start Accessing Banking Needs <br />
             With All Devices and All Platforms <br />
@@ -172,8 +171,6 @@ const Login = () => {
           </p>
         </div>
       </div>
-      {/* <FullPageLoader/> */}
-    </div>
   );
 };
 

@@ -58,8 +58,8 @@ const SignUp = () => {
       <div className="row">
         <div className="col  d-none d-md-none d-lg-block wrapper">
           <h2 className="text-white fw-bold ms-5 mt-3">Zwallet</h2>
-          <img className="position-absolute" src="images/waves.png" alt="" />
-          <img className="ms-5 ps-5 mt-5" src={Image} alt="" width="450" />
+          {/* <img className="position-absolute" src="images/waves.png" alt="" /> */}
+          <img className="ms-5 ps-5 mt-3" src={Image} alt="" width="450" />
           <h4 className="text-light text-center">
             App that Covering Banking Needs.
           </h4>
