@@ -4,10 +4,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../Components/Footer'
 import Navbar from '../Components/Navbar'
 import Sidebar from '../Components/Sidebar'
+import Modal from '../Components/Modal'
+import Button from '../Components/Button/Index'
 
 const Profile = () => {
 
     const [user, setUser]= useState(null)
+    const [openModal, setOpenModal]= useState()
 
     useEffect(()=>{
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -46,7 +49,12 @@ const Profile = () => {
                 <div className="choice mb-3"><p className='desc fs-6 ms-1 mt-2'>Personal Information</p><Link to="/Personal-Info"> <img className='mt-2 ms-5' src="images/arrow-left.svg" alt="" width="28" height="28"/></Link></div>
                 <div className="choice mb-3"><p className='desc fs-6 ms-1 mt-2'>Change Password</p> <img className='mt-2 ms-5' src="images/arrow-left.svg" alt="" width="28" height="28"/></div>
                 <div className="choice mb-3"><p className='desc fs-6 me-5 mt-2'>Change PIN</p><Link to="/Change-PIN"> <img className='mt-2 ms-5' src="images/arrow-left.svg" alt="" width="28" height="28"/></Link></div>
-                <div className="choice d-flex justify-content-start mb-3" onClick={handleLogout}><p className='desc fs-6 ms-5 mt-2'>Logout</p></div>
+                <div className="choice d-flex justify-content-start mb-3" onClick={()=>{setOpenModal(true)}}><p className='desc fs-6 ms-5 mt-2'>Logout</p></div>
+                {openModal &&  <Modal className='d-flex flex-column' closeModal={setOpenModal}>
+            <p>Are You Sure to LogOut your Account</p>
+              <Button  onClick={handleLogout} className="btn-accept me-3">Accept</Button>
+              <Button onClick={()=>{setOpenModal(false)}} className="btn-cancel">Cancel</Button>
+            </Modal>}
             </div>
         </div>
            <Footer/>

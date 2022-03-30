@@ -1,29 +1,21 @@
-import React, {useEffect, useState} from 'react'
-import axios from 'axios';
+import React, {useEffect} from 'react'
+// import axios from 'axios';
+import * as BsIcons from "react-icons/fi";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
+import { useDispatch, useSelector } from 'react-redux';
+import { GetUser } from '../../redux/action/users';
 
 const ManagePn = () => {
 
-  const [user, setUser]= useState(null)
+  const dispatch = useDispatch()
+
+  const {data} = useSelector((state)=> state.GetUser)
 
   useEffect(()=>{
-    const token = localStorage.getItem("token")
-    const config = {
-      headers : {Authorization : `Bearer ${token}`}
-    }
-    // console.log(userFromLS);
-    axios.get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users/profile/`, config)
-    .then((res) => {
-      const result = res.data.data;
-      console.log(result);
-      setUser(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  },[])
+    dispatch(GetUser())
+  },[dispatch])
 
 
     return (
@@ -37,8 +29,9 @@ const ManagePn = () => {
             You can only delete the phone number and then <br /> you must add another phone number.
             </p>
             <div className="search-user ms-4 mt-4 p-2 d-flex justify-content-between">
-                <p className='ms-2'>Primary <br /><h5 className='fw-bold position-absolute'>{user ? user.telephone : "-"}</h5></p>
-                <img className='mt-2 me-3' src="/images/trash.png" alt="" width={30} height={30}/>
+                <p className='ms-2'>Primary <br /><h5 className='position-absolute'>{data ? data.telephone : "-"}</h5></p>
+                {/* <img className='mt-2 me-3' src="/images/trash.png" alt="" width={30} height={30}/> */}
+                <BsIcons.FiTrash className='mt-3 me-3 trash'  size={25}/>
             </div>
           </div>
         </div>

@@ -10,6 +10,15 @@
   padding: 0;
 }
 
+*::-webkit-scrollbar {
+  width: 6px;
+  background: #fafcff;
+}
+*::-webkit-scrollbar-thumb {
+  background: #6379f4;
+  border-radius: 2px;
+}
+
 .App {
   text-align: center;
 }

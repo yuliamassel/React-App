@@ -141,7 +141,7 @@ const SignUp = () => {
               </Link>
             </p>
           </div>
-          <Button className="btn mt-4 ms-4" type="submit">SignUp</Button>
+          <Button className="btn mt-4 ms-4" type="submit" disabled={!form.username || !form.email || !form.password}>SignUp</Button>
           <p className="ms-4 mt-3">
               Already have an account? Let’s
               <Link to="/login" className="text text-decoration-none text-primary"> Login</Link>

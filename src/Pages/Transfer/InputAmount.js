@@ -10,11 +10,12 @@ import Sidebar from "../../Components/Sidebar";
 
 const InputAmount = () => {
   // const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const [disable, setDisable] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState("");
   const [form, setForm] = useState({
-    amount: 0,
+    amount: null,
     date: new Date(),
     notes: "",
   });
@@ -139,6 +140,7 @@ const InputAmount = () => {
             <form>
               <Input
                 className="input-amount mb-3"
+                autoFocus
                 type="number"
                 name="amount"
                 placeholder="0.00"
@@ -157,7 +159,7 @@ const InputAmount = () => {
               />
             </form>
           </div>
-          <Button className="btn-small mt-4" onClick={handleTransfer}>
+          <Button  disabled={!form.amount || !form.notes} className="btn-small mt-4" onClick={handleTransfer}>
             Continue
           </Button>
         </div>

@@ -104,8 +104,10 @@ const Comfirmation = () => {
                 <h5 className="fw-bold fs-6">{dataTransfer.notes}</h5>
               </p>
             </div>
-            <Button className="btn-small my-5" onClick={handleClick}>Continue</Button>
           </div>
+          <div className="action-confirm">
+            <Button className="btn-small2 my-5" onClick={handleClick}>Continue</Button>
+            </div>
         </div>
       </div>
       <Footer />
