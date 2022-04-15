@@ -23,7 +23,7 @@ const Login = () => {
   // console.log(data);
   // const [Loading, setLoading] = useState(false)
   // const [errorMsg , setErrorMsg]= useState("")
-  const [disable, setDisable] = useState(false);
+  // const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let userInfo = localStorage.getItem("userInfo")
@@ -47,6 +47,7 @@ const Login = () => {
     if (userInfo.token !== undefined) {
       navigate("/home");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfo]);
 
   const handleClick = () => {
@@ -83,10 +84,10 @@ const Login = () => {
      </p>
       </div>
     </div>
-    <h2 className="title-mobile pt-5 mb-1 text-center d-block d-md-block d-lg-none ">
+    <div className="col-12 col-lg-6 login-mob">
+    <h2 className="title-mobile text-center d-block d-md-block d-lg-none ">
       Zwallet
     </h2>
-    <div className="col-6 p-4 login-mob">
       <h4 className="p-4 fw-bold  d-none d-md-none d-lg-block">
         Start Accessing Banking Needs <br />
         With All Devices and All Platforms <br />

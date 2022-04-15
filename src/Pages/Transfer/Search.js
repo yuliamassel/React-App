@@ -18,9 +18,10 @@ const Search = () => {
       headers : {Authorization : `Bearer ${userInfo.token}`}
     }
     axios
-      .get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users?limit=5&page=10`, config)
+      .get(`${process.env.REACT_APP_BACKEND_ZWALLET}/users`, config)
       .then((res) => {
         const result = res.data.data;
+        console.log("result get all user", result)
         setUsers(result);
       })
       .catch((err) => {

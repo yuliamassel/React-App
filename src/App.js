@@ -21,6 +21,8 @@ import EditProfile from './Pages/EditProfile';
 import { io } from 'socket.io-client';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import ResetPass from './Pages/resetpass';
+import TopUp from './Pages/TopUp';
+import AddPhone from './Pages/PersonalInformation/AddPhone';
 
 const App = () => {
 
@@ -32,6 +34,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="Home" element={<RequireAuth><Home/></RequireAuth>}/>
+        <Route path="TopUp" element={<RequireAuth><TopUp/></RequireAuth>}/>
         <Route path="History" element={<RequireAuth> <History/></RequireAuth>}/>
         <Route path="Search-Receiver" element={<RequireAuth><Search/></RequireAuth>}/>
         <Route path="Input-Blank/:id" element={<RequireAuth><InputAmount/></RequireAuth>}/>
@@ -43,6 +46,7 @@ const App = () => {
         <Route path="Change-PIN" element={<RequireAuth><ChangePin/></RequireAuth>}/>
         <Route path="New-PIN" element={<RequireAuth><NewPin/></RequireAuth>}/>
         <Route path="Manage-Phone-Number" element={<RequireAuth><ManagePn/></RequireAuth>}/>
+        <Route path='Add-Phone-Number' element={<RequireAuth><AddPhone/></RequireAuth>}/>
         <Route path='/' element={<LandingPage/>}/>
 
         <Route path="login" element={<Login/>}/>

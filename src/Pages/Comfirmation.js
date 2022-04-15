@@ -89,7 +89,7 @@ const Comfirmation = () => {
             <div className="search-user ms-4 mb-3">
               <p className="ms-3 mt-2">
                 Balance Left <br />
-                <h5 className="fw-bold fs-6">{comfirm.ballance}</h5>
+                <h5 className="fw-bold fs-6">{comfirm.balance}</h5>
               </p>
             </div>
             <div className="search-user ms-4 mb-3">

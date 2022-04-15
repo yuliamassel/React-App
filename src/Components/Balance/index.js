@@ -17,7 +17,7 @@ const Balance = ({telephone, ballance}) => {
       <div className="balance shape-blue mt-4">
         <div className="text-white p-3">
           <p>Balance</p>
-          <h4 className="fw-bold">{ballance}</h4>
+          <h4 className="fw-bold">Rp.{ballance}</h4>
           <span>{telephone}</span>
         </div>
         <div className="d-flex flex-column p-3 me-5">

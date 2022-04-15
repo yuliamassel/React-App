@@ -27,7 +27,8 @@ const Home = () => {
 
   return (
     <div className="body">
-      <nav className="navbar Nav ">
+      <Navbar/>
+      {/* <nav className="navbar Nav ">
         <div className="container">
           <h2 className="title">Zwallet</h2>
           <img
@@ -47,19 +48,21 @@ const Home = () => {
                 setOpenModal(true);
               }}
             />
-            {/* <Modal/> */}
           </div>
         </div>
-      </nav>
+      </nav> */}
       <div className="container ps-5 ms-5 d-flex flex-row">
         <Sidebar />
         <div className="w-100 h-100 d-flex flex-row flex-wrap">
           {openModal && <Modal closeModal={setOpenModal} />}
           <Balance
             telephone={data ? data.telephone : "-"}
-            ballance={data ? data.ballance : 0}
+            ballance={data ? data.balance : 0}
           />
-          <Graphic />
+          <Graphic 
+            income={data ? data.income : 0}
+            expense={data ? data.expense : 0}
+          />
           <TransactionHistory />
         </div>
       </div>

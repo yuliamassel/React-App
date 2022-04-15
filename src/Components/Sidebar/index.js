@@ -40,9 +40,11 @@ const Sidebar = () => {
           </NavLink>
           </li>
           <li className="list-top pe-4">
+          <NavLink activeClassName="active" to="/topup" className="text-decoration-none text-secondary">
             <h5 className="fw-bold ms-5">
             <BsIcons.FiPlus className="me-2" size={28}/> Top Up
             </h5>
+            </NavLink>
           </li>
           <li className="list-top pe-4">
           <NavLink activeClassName="active" to="/Profile"  className="text-decoration-none text-secondary"  >

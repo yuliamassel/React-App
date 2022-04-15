@@ -60,7 +60,7 @@ color: rgba(255, 255, 255, 0.8);
 } */
 .btn-main{
   position: absolute;
-  border: 1px solid#fdfefe;
+  border: 1px solid #fdfefe;
   height: 7%;
   width: 10%;
   background-color: white;
@@ -140,6 +140,50 @@ border-radius: 12px;
     z-index: 1;
     background-color: #ffffff;
     /* padding-top: 5vh; */
+}
+
+.input-AddPhone {
+  width: 437px;
+  padding-left: 3rem;
+  padding-bottom: 0.5rem;
+  border: none;
+  outline: none;
+  border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+  margin: -1rem 10rem;
+}
+
+.input-AddPhone:focus{
+  border-bottom: 2px solid #6379f4;
+}
+
+.input-AddPhone[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.icon-phone{
+  position: absolute;
+  color: rgba(169, 169, 169, 0.6);
+  right: 46rem;
+  top: 18.7rem;
+}
+
+.input-AddPhone::-webkit-input-placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: rgba(169, 169, 169, 0.8);
+}
+
+.btn-manage{
+  background-color: transparent;
+  color: #6379f4;
+  border: none;
+  outline: none;
 }
 
 .shape {
@@ -335,13 +379,14 @@ border-radius: 12px;
 }
 
 .skip {
-  /* left: -50rem; */
-  transform: translateX(31vw);
+  position: absolute;
+  /* transform: translateX(-5rem); */
+  margin: 0.4rem -4rem;
 }
 
-.h {
-  margin-bottom: -1px;
-}
+/* .h {
+  transform: translateX(-2rem);
+} */
 
 .btn-balance {
   width: 100%;
@@ -484,6 +529,25 @@ border-radius: 12px;
 }
 
 .input-amount[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-topup{
+  width: 50%;
+  border: none;
+  outline: none;
+  color: #6379f4;
+  text-align: center;
+  /* border-bottom: 1px solid #aaa; */
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 42px;
+  transition: 0.2s ease;
+  margin: 8rem 12rem;
+}
+
+.input-topup[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -653,7 +717,7 @@ border-radius: 12px;
     border-radius: 50%;
     /* padding: 5px;
     margin: 2px; */
-    transform: translate(1vw, -2vh);
+    transform: translate(1rem, 1rem);
     /* display: flex;
     align-items: center;
     justify-content: center; */
@@ -675,26 +739,23 @@ border-radius: 12px;
   }
   .modal-notif{
     position: absolute;
-    height: 80vh;
     padding-bottom: 30vh;
     margin-left: -50vw;
     margin-bottom: 50vh;
+    z-index: 3;
+    height: 80vh;
     width: 25vw;
-    background: #FFFFFF;
+    background: #000;
     box-shadow: 0px 0px 70px rgba(99, 99, 99, 0.15);
     border-radius: 20px;
-    transform: translateX(85vw);
-    z-index: 3;
-    margin-top: 5px;
+    transform: translate(-18rem, 3rem);
   }
   @media screen and (max-width:768px){
     .login-mob{
-      margin-top: 22vh!important;
+      /* margin-top: 22vh!important;
       transform: translateX(4vw);
-      position: absolute;
+      position: absolute; */
       background-color: #fff;
-      border-top-left-radius: 5%;
-      border-top-right-radius: 5%;
     }
   }
 

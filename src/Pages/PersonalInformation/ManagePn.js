@@ -29,7 +29,7 @@ const ManagePn = () => {
             You can only delete the phone number and then <br /> you must add another phone number.
             </p>
             <div className="search-user ms-4 mt-4 p-2 d-flex justify-content-between">
-                <p className='ms-2'>Primary <br /><h5 className='position-absolute'>{data ? data.telephone : "-"}</h5></p>
+                <p className='ms-2'>Primary <br /><h5 className='position-absolute'>{data.telephone ? data.telephone : "-"}</h5></p>
                 {/* <img className='mt-2 me-3' src="/images/trash.png" alt="" width={30} height={30}/> */}
                 <BsIcons.FiTrash className='mt-3 me-3 trash'  size={25}/>
             </div>

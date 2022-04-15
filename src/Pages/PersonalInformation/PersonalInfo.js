@@ -1,7 +1,8 @@
 // import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "../../Components/Button/Index";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
@@ -11,12 +12,21 @@ const PersonalInfo = () => {
 
   // const [user, setUser]= useState(null)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const {data} = useSelector((state)=> state.GetUser)
 
   useEffect(()=>{
     dispatch(GetUser())
   },[dispatch])
+
+  const handleClick = () =>{
+    if (data.telephone === null) {
+      navigate("/Add-Phone-Number")
+    } else{
+      navigate("/Manage-Phone-Number")
+    }
+  }
 
   return (
     <div className="body">
@@ -31,14 +41,14 @@ const PersonalInfo = () => {
           </p>
           <div className="detail">
           <div className="search-user ms-4 mb-3">
-              <p className="ms-3 mt-2">Ussername <br /><h5 className="fw-bold fs-6">{data ? data.username : ""}</h5></p>            
+              <p className="ms-3 mt-2">Username <br /><h5 className="fw-bold fs-6">{data ? data.username : ""}</h5></p>            
           </div>
           <div className="search-user ms-4 mb-3">
               <p className="ms-3 mt-2 ">Verified E-mail<br /><h5 className="fw-bold fs-6">{data ?data.email : "-"}</h5></p>            
           </div>
           <div className="search-user d-flex justify-content-between ms-4 mb-3">
-              <p className="ms-3 mt-2 ">Phone Number <br /><h5 className="fw-bold fs-6">{data ? data.telephone : "-"}</h5></p>    
-              <Link to="/Manage-Phone-Number" className="text-decoration-none mt-4 me-5">Manage</Link>        
+              <p className="ms-3 mt-2 ">Phone Number <br /><h5 className="fw-bold fs-6">{data.telephone ? data.telephone : "-"}</h5></p>    
+              <Button onClick={handleClick} className="btn-manage mt-2 me-5">Manage</Button>        
           </div>
           </div>
         </div>
