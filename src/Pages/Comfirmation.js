@@ -95,7 +95,7 @@ const Comfirmation = () => {
             <div className="search-user ms-4 mb-3">
               <p className="ms-3 mt-2 ">
                 Date & Time <br />
-                <h5 className="fw-bold fs-6">{dataTransfer.create_at}</h5>
+                <h5 className="fw-bold fs-6">{dataTransfer.created_at}</h5>
               </p>
             </div>
             <div className="search-user ms-4 mb-3">

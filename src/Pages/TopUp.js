@@ -60,6 +60,7 @@ const TopUp = () => {
         <Sidebar />
         <div className="shape big-box mt-4">
           <h5 className="fw-bold p-4">Top Up</h5>
+          <p className="ms-4">Minimal pengisian saldo adalah Rp10.000</p>
           <form>
             <Input
               className="input-topup"
@@ -71,8 +72,8 @@ const TopUp = () => {
               value={form.amount_topup}
             />
           </form>
-            <Button onClick={handleTopUp}>
-              Pay
+            <Button className="btn-pay" onClick={handleTopUp}>
+              Top Up
             </Button>
         </div>
       </div>

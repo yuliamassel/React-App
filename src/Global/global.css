@@ -552,6 +552,24 @@ border-radius: 12px;
   margin: 0;
 }
 
+.btn-pay{
+  background: #dadada;
+  color: #aaa;
+  font-weight: 500;
+  width: 45%;
+  height: 6vh;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  transform: translate(13rem, -4rem);
+}
+
+.btn-pay:hover {
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  background-color: #6379f4;
+  color: #ffffff;
+}
+
 .input-notes{
   /* position: absolute; */
   width: 70%;
