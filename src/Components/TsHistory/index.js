@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const TransactionHistory = () => {
   return (
     <>
-      <div className=" box shape d-flex flex-row flex-wrap  overflow-auto">
+      <div className=" box shape d-flex flex-row flex-wrap mb-lg-0 mb-5">
         <div className="text-history">
           <h6 className="fw-bold">
             Transaction History
           </h6>
-          <p className="text-info mb-2"><Link to='/history'> See All</Link></p>
+          <p className="text-info mb-lg-2 mb-0 me-2"><Link to='/history'> See All</Link></p>
         </div>
 
         <div className="user mt-5">

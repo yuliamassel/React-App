@@ -1,52 +1,55 @@
-# Project Zwallet!
+# Z wallet
 
-We bring you a mobile app for banking problems that oftenly wasting much of your times. Zwallet is an application that focussing in banking needs for all users in the world.
+We bring you a mobile app for banking problems that oftenly wasting much of your times. Zwallet is an application that focussing in banking needs for all users in the world. This is for API [Z Wallet](https://github.com/yuliamassel/Database-Zwallet) 
 
-  
-
-# Features
-
-  
-
-We have some great features from the application and it’s totally free to use by all users around the world.
-
-1. We have 24/7 contact support so you can contact us whenever you want and we will respond it.
-
-2. We make sure your data is safe in our database and we will encrypt any data you submitted to us.
-
-3. Zwallet is 100% totally free to use it’s now available on Google Play Store and App Store.
+# Getting Started
+    To running this app in local
+      - Clone this repo with git clone https://github.com/yuliamassel/React-App.git 
+      - npm install to install all reqruired dependencies
+      - Create a .env  file 
+      - node index.js or npm start to start the local server
 
   
 
-## Files
+# Equipment
+    This project using with :
 
-1. Register Pages
+      - React JS (Framework)
+      - Axios
+      - Bootstrap v5
+      - React Bootstrap
+      - React Icon
+      - Socket io
 
-- Login 
-	![](public/images/Login.png)	
+# Feature
+- **Login**, if you already have an account.
+- **Sign Up**, if you need to create an account.
+- **Reset Password**, if you already have an account but forgot the password.
+- **Home**, you can check & see your balance, your expanse & income or your history activity.
+- **Search Receiver**, You can choice receiver or your destination transfer. 
+- **Input Amount**, you can input nominal for doing transfer.  
+- **Comfirmation**, to comfirm your transfering
+- **Profile**, you can customize or edit your profile.
+- **Notification**,  You can see your notification after making transfer
+
+# Snippets
+
+- Home
+
+![Home](/public/images/home_zwallet.png)
+  
+- Login
+
+![Login](/public/images/Login.png)
+
 - Sign Up
 
-- Reset Password
+![Sign Up](http://localhost:3000/signup_news-app.png)
 
-2. Home Page
+- Articles  
 
-3. History Page
+![Articles](http://localhost:3000/article_news-app.png)
 
-4. Flow Transfer Pages
-
-- Input Amount Blank
-
-- Input Amount Failed
-
-- Comfirmation
-
-- Transfer Succes
-
-- Transfer Failed
-
-5. Profile
-
-6. Personal Information
 
   
 

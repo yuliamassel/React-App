@@ -20,8 +20,8 @@ const Balance = ({telephone, ballance}) => {
           <h4 className="fw-bold">Rp.{ballance}</h4>
           <span>{telephone}</span>
         </div>
-        <div className="d-flex flex-column p-3 me-5">
-          <Button className="btn-balance" onClick={handleClick}><img src="/images/arrow-grey.png" alt="" /> Transfer</Button>
+        <div className="d-flex flex-column d-none d-md-none d-lg-block p-3 ">
+          <Button className="btn-balance mb-2" onClick={handleClick}><img src="/images/arrow-grey.png" alt="" /> Transfer</Button>
           <Button className="btn-balance"><img src="/images/plus-grey.png" alt="" /> Top Up</Button>
         </div>
       </div>

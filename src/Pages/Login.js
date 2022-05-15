@@ -84,7 +84,7 @@ const Login = () => {
      </p>
       </div>
     </div>
-    <div className="col-12 col-lg-6 login-mob">
+    <div className="p-lg-4 col-12 col-lg-6 login-mob">
     <h2 className="title-mobile text-center d-block d-md-block d-lg-none ">
       Zwallet
     </h2>

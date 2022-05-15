@@ -22,7 +22,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="sidebar shape  mt-4 me-4">
+      <div className="sidebar shape  mt-4 me-4 d-none d-lg-block">
         <ul className="ul">
           <li className="list-top">
         <NavLink activeClassName="active" to="/home" className="text-decoration-none text-secondary">

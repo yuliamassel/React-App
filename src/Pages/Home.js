@@ -11,12 +11,14 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { GetUser } from "../redux/action/users";
 import Modal from "../Components/Modal";
-import { BiBell } from "react-icons/bi";
+import Button from "../Components/Button/Index";
+import { useNavigate } from "react-router-dom";
 // import { axiosInstance } from "./API/Axios";
 
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { data, loading, error } = useSelector((state) => state.GetUser);
   console.log(data, "data di HOME");
@@ -25,9 +27,13 @@ const Home = () => {
     dispatch(GetUser());
   }, [dispatch]);
 
+  const handleClick = () => {
+    navigate("/search-receiver");
+  };
+
   return (
-    <div className="body">
-      <Navbar/>
+    <div className="body col-12 col-lg-12">
+      <Navbar className="navbar Nav"/>
       {/* <nav className="navbar Nav ">
         <div className="container">
           <h2 className="title">Zwallet</h2>
@@ -51,7 +57,7 @@ const Home = () => {
           </div>
         </div>
       </nav> */}
-      <div className="container ps-5 ms-5 d-flex flex-row">
+      <div className="container ps-lg-5 ms-lg-5 d-flex flex-row">
         <Sidebar />
         <div className="w-100 h-100 d-flex flex-row flex-wrap">
           {openModal && <Modal closeModal={setOpenModal} />}
@@ -59,7 +65,15 @@ const Home = () => {
             telephone={data ? data.telephone : "-"}
             ballance={data ? data.balance : 0}
           />
-          <Graphic 
+          <div className="d-flex flex-row d-block d-md-block d-lg-none my-4">
+            <Button className="btn-balancemob me-3" onClick={handleClick}>
+              <img src="/images/arrow-grey.png" alt="" /> Transfer
+            </Button>
+            <Button className="btn-balancemob ">
+              <img src="/images/plus-grey.png" alt="" /> Top Up
+            </Button>
+          </div>
+          <Graphic
             income={data ? data.income : 0}
             expense={data ? data.expense : 0}
           />
